@@ -1,0 +1,25 @@
+fragment PostParts on Post {
+  __typename
+  title
+  subtitle
+  category
+  subCategory
+  heroImage
+  heroCaption
+  author
+  publishedAt
+  readTime
+  excerpt
+  quote {
+    __typename
+    text
+    author
+  }
+  videoEmbed {
+    __typename
+    provider
+    embedUrl
+    title
+  }
+  body
+}

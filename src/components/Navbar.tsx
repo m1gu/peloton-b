@@ -23,97 +23,113 @@ export const Navbar = () => {
   ];
 
   return (
-    <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-50">
-      {/* Top Banner / Ticker */}
+    <header className="w-full bg-white">
+      {/* Top Banner / Utilities */}
       <div className="bg-neutral-900 text-white text-[11px] tracking-wider uppercase py-1.5 px-4 font-mono flex items-center justify-between border-b border-neutral-800">
         <div className="flex items-center space-x-3 overflow-hidden">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-semibold text-neutral-200">En Terreno:</span>
-          <span className="text-neutral-300 truncate">
-            {SITE_INFO.location} · Fotoperiodismo y Crónica de Béisbol y Sóftbol · Cobertura WBSC
-          </span>
-        </div>
-        <div className="hidden md:flex items-center space-x-4 text-neutral-400">
-          <span>{new Date().toLocaleDateString('es-EC', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-        </div>
-      </div>
-
-      {/* Main Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
-        {/* Mobile Menu Button */}
-        <div className="flex items-center lg:hidden">
+          {/* Mobile Menu Trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-neutral-800 hover:text-black focus:outline-none"
+            className="lg:hidden p-1 text-neutral-300 hover:text-white focus:outline-none"
             aria-label="Abrir menú"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
+          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-neutral-300 truncate">
+            {SITE_INFO.location} · Fotoperiodismo y Crónica de Béisbol y Sóftbol · WBSC
+          </span>
         </div>
 
-        {/* Brand / Logo */}
-        <Link href="/" className="flex items-center group py-1">
-          <div className="relative h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0">
-            <Image
-              src="/logo_peloton_b.png"
-              alt="Pelotón B"
-              fill
-              className="object-contain group-hover:scale-105 transition-transform duration-200"
-              priority
-            />
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-7">
-          {navLinks.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-[13px] font-semibold tracking-wider uppercase text-neutral-700 hover:text-black transition-colors relative py-1 hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-200"
+        <div className="flex items-center space-x-4">
+          <span className="hidden md:inline text-neutral-400">
+            {new Date().toLocaleDateString('es-EC', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          </span>
+          <div className="flex items-center space-x-2 border-l border-neutral-700 pl-3">
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-1 text-neutral-300 hover:text-white transition-colors"
+              aria-label="Buscar"
             >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Action icons */}
-        <div className="flex items-center space-x-3">
-          <button
-            onClick={() => setSearchOpen(!searchOpen)}
-            className="p-2 text-neutral-700 hover:text-black rounded-full hover:bg-neutral-100 transition-colors"
-            aria-label="Buscar"
-          >
-            <Search className="w-5 h-5" />
-          </button>
-          <div className="hidden sm:flex items-center space-x-2 border-l border-neutral-200 pl-3">
+              <Search className="w-3.5 h-3.5" />
+            </button>
             <a
               href={SITE_INFO.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 text-neutral-600 hover:text-black transition-colors"
+              className="p-1 text-neutral-300 hover:text-white transition-colors"
               aria-label="Instagram"
             >
-              <InstagramIcon className="w-4 h-4" />
+              <InstagramIcon className="w-3.5 h-3.5" />
             </a>
             <a
               href={SITE_INFO.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 text-neutral-600 hover:text-black transition-colors"
+              className="p-1 text-neutral-300 hover:text-white transition-colors"
               aria-label="YouTube"
             >
-              <YoutubeIcon className="w-4 h-4" />
+              <YoutubeIcon className="w-3.5 h-3.5" />
             </a>
             <a
               href={SITE_INFO.social.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 text-neutral-600 hover:text-black transition-colors"
+              className="p-1 text-neutral-300 hover:text-white transition-colors"
               aria-label="X (Twitter)"
             >
-              <XIcon className="w-4 h-4" />
+              <XIcon className="w-3.5 h-3.5" />
             </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Centered Masthead with 3X Logo */}
+      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 flex flex-col items-center justify-center">
+        <Link href="/" className="inline-block group">
+          {/* Logo 3x size: 200px - 240px */}
+          <div className="relative h-44 w-44 sm:h-52 sm:w-52 md:h-60 md:w-60">
+            <Image
+              src="/logo_peloton_b.png"
+              alt="Pelotón B"
+              fill
+              className="object-contain group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
+          </div>
+        </Link>
+      </div>
+
+      {/* Centered Main Navigation Bar */}
+      <div className="w-full border-t border-b border-neutral-200 bg-white sticky top-0 z-40 shadow-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="hidden lg:flex items-center justify-center space-x-8 sm:space-x-10 py-3">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[13px] font-bold tracking-widest uppercase text-neutral-800 hover:text-black transition-colors relative py-1 hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-200"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile menu trigger row if screen is small */}
+          <div className="lg:hidden flex items-center justify-between py-2.5">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex items-center space-x-2 text-xs font-mono uppercase font-bold text-neutral-800"
+            >
+              <Menu className="w-4 h-4" />
+              <span>Menú de Secciones</span>
+            </button>
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-1.5 text-neutral-700 hover:text-black"
+            >
+              <Search className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ export const Navbar = () => {
       </div>
 
       {/* Main Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between">
         {/* Mobile Menu Button */}
         <div className="flex items-center lg:hidden">
           <button
@@ -52,23 +52,15 @@ export const Navbar = () => {
         </div>
 
         {/* Brand / Logo */}
-        <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative w-11 h-11 flex-shrink-0 bg-neutral-100 rounded-md overflow-hidden border border-neutral-200">
+        <Link href="/" className="flex items-center group py-1">
+          <div className="relative h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0">
             <Image
               src="/logo_peloton_b.png"
-              alt="Pelotón B Logo"
+              alt="Pelotón B"
               fill
-              className="object-contain p-1 group-hover:scale-105 transition-transform duration-200"
+              className="object-contain group-hover:scale-105 transition-transform duration-200"
               priority
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-black tracking-tighter text-2xl text-black leading-none uppercase font-serif">
-              PELOTÓN B
-            </span>
-            <span className="text-[9px] uppercase tracking-widest text-neutral-500 font-semibold mt-0.5">
-              Crónica & Diamante
-            </span>
           </div>
         </Link>
 

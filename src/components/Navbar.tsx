@@ -85,10 +85,10 @@ export const Navbar = () => {
       </div>
 
       {/* Centered Masthead with 3X Logo */}
-      <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 flex flex-col items-center justify-center">
-        <Link href="/" className="inline-block group">
-          {/* Logo 3x size: 200px - 240px */}
-          <div className="relative h-44 w-44 sm:h-52 sm:w-52 md:h-60 md:w-60">
+      <div className="max-w-7xl mx-auto px-4 py-1 flex flex-col items-center justify-center">
+        <Link href="/" className="inline-block group py-1">
+          {/* Logo 3x size with tight bounds */}
+          <div className="relative h-36 w-36 sm:h-44 sm:w-44 md:h-52 md:w-52">
             <Image
               src="/logo_peloton_b.png"
               alt="Pelotón B"

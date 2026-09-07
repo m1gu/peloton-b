@@ -1,5 +1,5 @@
 import React from 'react';
-import { ARTICLES } from '@/data/sports-data';
+import { getAllArticles } from '@/lib/posts';
 import { ArticleCard } from '@/components/ArticleCard';
 
 export const metadata = {
@@ -8,6 +8,7 @@ export const metadata = {
 };
 
 export default function NoticiasPage() {
+  const articles = getAllArticles();
   return (
     <div className="w-full bg-white">
       {/* Header */}
@@ -27,7 +28,7 @@ export default function NoticiasPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ARTICLES.map((article) => (
+          {articles.map((article) => (
             <ArticleCard key={article.id} article={article} variant="standard" />
           ))}
         </div>

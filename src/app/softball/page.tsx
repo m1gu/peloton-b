@@ -1,5 +1,5 @@
 import React from 'react';
-import { ARTICLES } from '@/data/sports-data';
+import { getAllArticles } from '@/lib/posts';
 import { ArticleCard } from '@/components/ArticleCard';
 import { LeadHero } from '@/components/LeadHero';
 
@@ -9,7 +9,8 @@ export const metadata = {
 };
 
 export default function SoftballPage() {
-  const softballArticles = ARTICLES.filter((a) => a.category === 'Softball');
+  const articles = getAllArticles();
+  const softballArticles = articles.filter((a) => a.category === 'Softball');
   const heroArticle = softballArticles[0];
   const otherArticles = softballArticles.slice(1);
 

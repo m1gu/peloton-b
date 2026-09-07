@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Clock, Calendar, ArrowLeft, Share2, Camera, Quote, Mail } from 'lucide-react';
-import { ARTICLES, Article } from '@/data/sports-data';
+import { getAllArticles, getArticleBySlug } from '@/lib/posts';
 import { ArticleCard } from '@/components/ArticleCard';
 
 interface ArticlePageProps {
@@ -13,20 +13,22 @@ interface ArticlePageProps {
 }
 
 export async function generateStaticParams() {
-  return ARTICLES.map((article) => ({
+  const articles = getAllArticles();
+  return articles.map((article) => ({
     slug: article.slug,
   }));
 }
 
 export default async function ArticleSlugPage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = ARTICLES.find((a) => a.slug === slug);
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
-  const relatedArticles = ARTICLES.filter((a) => a.id !== article.id).slice(0, 3);
+  const allArticles = getAllArticles();
+  const relatedArticles = allArticles.filter((a) => a.id !== article.id).slice(0, 3);
 
   return (
     <article className="w-full bg-white">

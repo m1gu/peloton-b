@@ -1,16 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Flame, ShieldAlert, Award } from 'lucide-react';
-import { ARTICLES, SITE_INFO } from '@/data/sports-data';
+import { ArrowRight, Flame, Award } from 'lucide-react';
+import { SITE_INFO } from '@/data/sports-data';
+import { getAllArticles } from '@/lib/posts';
 import { LeadHero } from '@/components/LeadHero';
 import { ArticleCard } from '@/components/ArticleCard';
 import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { VideoShowcase } from '@/components/VideoShowcase';
 
 export default function HomePage() {
-  const leadArticle = ARTICLES.find((a) => a.isLeadHero) || ARTICLES[0];
-  const featuredArticles = ARTICLES.filter((a) => a.id !== leadArticle.id).slice(0, 3);
-  const secondaryArticles = ARTICLES.filter((a) => a.id !== leadArticle.id).slice(1, 4);
+  const articles = getAllArticles();
+  const leadArticle = articles.find((a) => a.isLeadHero) || articles[0];
+  const featuredArticles = articles.filter((a) => a.id !== leadArticle.id).slice(0, 3);
+  const secondaryArticles = articles.filter((a) => a.id !== leadArticle.id).slice(1, 4);
 
   return (
     <div className="w-full bg-white">
